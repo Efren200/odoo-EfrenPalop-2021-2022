@@ -1,0 +1,96 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="proyecteprova.player_list">
+      <field name="name">proyecteprova player list</field>
+      <field name="model">proyecteprova.player</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="level"/>
+          <field name="gold"/>
+          <field name="mana"/>
+          <field name="gems"/>
+          <field name="trophies"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="proyecteprova.action_player_window">
+      <field name="name">proyecteprova player window</field>
+      <field name="res_model">proyecteprova.player</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="proyecteprova.action_hero_window">
+      <field name="name">proyecteprova hero window</field>
+      <field name="res_model">proyecteprova.hero</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="proyecteprova.action_potion_window">
+      <field name="name">proyecteprova potion window</field>
+      <field name="res_model">proyecteprova.potion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="proyecteprova.action_collector_building_window">
+      <field name="name">proyecteprova collector_building window</field>
+      <field name="res_model">proyecteprova.collector_building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="proyecteprova.action_storage_building_window">
+      <field name="name">proyecteprova storage_building window</field>
+      <field name="res_model">proyecteprova.storage_building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="proyecteprova.action_building_window">
+      <field name="name">proyecteprova building window</field>
+      <field name="res_model">proyecteprova.building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="proyecteprova.action_server">
+      <field name="name">proyecteprova server</field>
+      <field name="model_id" ref="model_proyecteprova_proyecteprova"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem name="proyecteprova" id="proyecteprova.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Management" id="proyecteprova.menu_1" parent="proyecteprova.menu_root"/>
+    <menuitem name="Buildings Types" id="proyecteprova.menu_2" parent="proyecteprova.menu_root"/>
+    <!-- actions -->
+
+    <menuitem name="Players" id="proyecteprova.menu_player_list" parent="proyecteprova.menu_1"
+              action="proyecteprova.action_player_window"/>
+    <menuitem name="Heroes" id="proyecteprova.menu_hero_list" parent="proyecteprova.menu_1"
+              action="proyecteprova.action_hero_window"/>
+    <menuitem name="Potions" id="proyecteprova.menu_potion_list" parent="proyecteprova.menu_1"
+              action="proyecteprova.action_potion_window"/>
+
+    <menuitem name="Collector Buildings" id="proyecteprova.menu_collector_building_list" parent="proyecteprova.menu_2"
+              action="proyecteprova.action_collector_building_window"/>
+    <menuitem name="Storage Buildings" id="proyecteprova.menu_storage_building_list" parent="proyecteprova.menu_2"
+              action="proyecteprova.action_storage_building_window"/>
+    <menuitem name="Buildings" id="proyecteprova.menu_building_list" parent="proyecteprova.menu_2"
+              action="proyecteprova.action_building_window"/>
+
+-->
+  </data>
+</odoo>

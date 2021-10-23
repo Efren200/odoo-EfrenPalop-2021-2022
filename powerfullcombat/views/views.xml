@@ -1,0 +1,96 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="powerfullcombat.player_list">
+      <field name="name">powerfullcombat player list</field>
+      <field name="model">powerfullcombat.player</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="level"/>
+          <field name="gold"/>
+          <field name="mana"/>
+          <field name="gems"/>
+          <field name="trophies"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="powerfullcombat.action_player_window">
+      <field name="name">powerfullcombat player window</field>
+      <field name="res_model">powerfullcombat.player</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="powerfullcombat.action_hero_window">
+      <field name="name">powerfullcombat hero window</field>
+      <field name="res_model">powerfullcombat.hero</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="powerfullcombat.action_potion_window">
+      <field name="name">powerfullcombat potion window</field>
+      <field name="res_model">powerfullcombat.potion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="powerfullcombat.action_collector_building_window">
+      <field name="name">powerfullcombat collector_building window</field>
+      <field name="res_model">powerfullcombat.collector_building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="powerfullcombat.action_storage_building_window">
+      <field name="name">powerfullcombat storage_building window</field>
+      <field name="res_model">powerfullcombat.storage_building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="powerfullcombat.action_building_window">
+      <field name="name">powerfullcombat building window</field>
+      <field name="res_model">powerfullcombat.building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="proyecteprova.action_server">
+      <field name="name">proyecteprova server</field>
+      <field name="model_id" ref="model_proyecteprova_proyecteprova"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem name="powerfullcombat" id="powerfullcombat.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Management" id="powerfullcombat.menu_1" parent="powerfullcombat.menu_root"/>
+    <menuitem name="Buildings Types" id="powerfullcombat.menu_2" parent="powerfullcombat.menu_root"/>
+    <!-- actions -->
+
+    <menuitem name="Players" id="powerfullcombat.menu_player_list" parent="powerfullcombat.menu_1"
+              action="powerfullcombat.action_player_window"/>
+    <menuitem name="Heroes" id="powerfullcombat.menu_hero_list" parent="powerfullcombat.menu_1"
+              action="powerfullcombat.action_hero_window"/>
+    <menuitem name="Potions" id="powerfullcombat.menu_potion_list" parent="powerfullcombat.menu_1"
+              action="powerfullcombat.action_potion_window"/>
+
+    <menuitem name="Collector Buildings" id="powerfullcombat.menu_collector_building_list" parent="powerfullcombat.menu_2"
+              action="powerfullcombat.action_collector_building_window"/>
+    <menuitem name="Storage Buildings" id="powerfullcombat.menu_storage_building_list" parent="powerfullcombat.menu_2"
+              action="powerfullcombat.action_storage_building_window"/>
+    <menuitem name="Buildings" id="powerfullcombat.menu_building_list" parent="powerfullcombat.menu_2"
+              action="powerfullcombat.action_building_window"/>
+
+-->
+  </data>
+</odoo>
