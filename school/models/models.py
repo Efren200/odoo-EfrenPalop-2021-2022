@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
+import secrets
 
 
 class student(models.Model):
@@ -12,9 +13,16 @@ class student(models.Model):
     enrollment_date = fields.Date()
     last_login = fields.Datetime()
     is_student = fields.Boolean()
+    password = fields.Char(compute='_get_password', store=True)
     photo = fields.Image(max_width=200, max_height=200)
     classroom = fields.Many2one('school.classroom', ondelete='set null', help='La clase a la que va')
     teachers = fields.Many2many('school.teacher', related='classroom.teachers', readonly=True)
+
+    @api.depends('name')
+    def _get_password(self):
+        for student in self:
+            student.password = secrets.token_urlsafe(12)
+
 
 class classroom(models.Model):
     _name = 'school.classroom'
@@ -30,6 +38,11 @@ class classroom(models.Model):
                                 relation='teachers_classrooms_ly',
                                 column1='classroom_id',
                                 column2='teacher_id')
+    delegate = fields.Many2one('school.student', compute='_get_delegate')
+
+    def _get_delegate(self):
+        for c in self:
+            c.delegate = c.students[0].id
 
 class teacher(models.Model):
     _name = 'school.teacher'
