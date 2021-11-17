@@ -11,4 +11,3 @@ class potion(models.Model):
     attack_increase = fields.Float()
     defense_increase = fields.Float()
     health_increase = fields.Float()
-    loquesiga = fields.Float()
