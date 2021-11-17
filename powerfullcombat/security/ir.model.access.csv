@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_powerfullcombat_player,powerfullcombat.player,model_powerfullcombat_player,base.group_user,1,1,1,1
-access_powerfullcombat_potion,powerfullcombat.potion,model_powerfullcombat_potion,base.group_user,1,1,1,1
-access_powerfullcombat_hero,powerfullcombat.hero,model_powerfullcombat_hero,base.group_user,1,1,1,1
-access_powerfullcombat_collector_building,powerfullcombat.collector_building,model_powerfullcombat_collector_building,base.group_user,1,1,1,1
-access_powerfullcombat_storage_building,powerfullcombat.storage_building,model_powerfullcombat_storage_building,base.group_user,1,1,1,1
-access_powerfullcombat_building,powerfullcombat.building,model_powerfullcombat_building,base.group_user,1,1,1,1

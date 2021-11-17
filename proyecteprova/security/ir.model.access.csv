@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_proyecteprova_player,proyecteprova.player,model_proyecteprova_player,base.group_user,1,1,1,1
-access_proyecteprova_potion,proyecteprova.potion,model_proyecteprova_potion,base.group_user,1,1,1,1
-access_proyecteprova_hero,proyecteprova.hero,model_proyecteprova_hero,base.group_user,1,1,1,1
-access_proyecteprova_collector_building,proyecteprova.collector_building,model_proyecteprova_collector_building,base.group_user,1,1,1,1
-access_proyecteprova_storage_building,proyecteprova.storage_building,model_proyecteprova_storage_building,base.group_user,1,1,1,1
-access_proyecteprova_building,proyecteprova.building,model_proyecteprova_building,base.group_user,1,1,1,1
