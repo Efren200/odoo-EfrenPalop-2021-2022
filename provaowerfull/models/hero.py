@@ -13,4 +13,5 @@ class hero(models.Model):
     attack = fields.Float()
     defense = fields.Float()
     health = fields.Float()
+    hero_icon = fields.Image(max_width=200, max_height=200)
 

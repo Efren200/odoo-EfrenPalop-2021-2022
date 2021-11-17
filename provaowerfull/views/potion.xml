@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="provaowerfull.potion_tree">
+            <field name="name">provaowerfull potion Tree</field>
+            <field name="model">provaowerfull.potion</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="attack_increase"/>
+                    <field name="defense_increase"/>
+                    <field name="health_increase"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.potion_form">
+            <field name="name">provaowerfull potion Form</field>
+            <field name="model">provaowerfull.potion</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="potion_icon" widget="image"/>
+                        <group>
+                            <separator string="Potion Information"></separator>
+                            <field name="name"/>  
+                            <field name="attack_increase"/>
+                            <field name="defense_increase"/>
+                            <field name="health_increase"/>                       
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

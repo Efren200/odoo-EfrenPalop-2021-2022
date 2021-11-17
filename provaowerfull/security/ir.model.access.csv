@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_provaowerfull_provaowerfull,provaowerfull.provaowerfull,model_provaowerfull_provaowerfull,base.group_user,1,1,1,1
+access_provaowerfull_player,provaowerfull.player,model_provaowerfull_player,base.group_user,1,1,1,1
+access_provaowerfull_building,provaowerfull.building,model_provaowerfull_building,base.group_user,1,1,1,1
+access_provaowerfull_potion,provaowerfull.potion,model_provaowerfull_potion,base.group_user,1,1,1,1
+access_provaowerfull_hero,provaowerfull.hero,model_provaowerfull_hero,base.group_user,1,1,1,1

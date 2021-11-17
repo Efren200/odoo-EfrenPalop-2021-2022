@@ -1,28 +1,32 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="provaowerfull.list">
-      <field name="name">provaowerfull list</field>
-      <field name="model">provaowerfull.provaowerfull</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
+
 
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="provaowerfull.action_window">
-      <field name="name">provaowerfull window</field>
-      <field name="res_model">provaowerfull.provaowerfull</field>
+
+    <record model="ir.actions.act_window" id="provaowerfull.players_action_window">
+      <field name="name">Powerfullcombat Players</field>
+      <field name="res_model">provaowerfull.player</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+    <record model="ir.actions.act_window" id="provaowerfull.heroes_action_window">
+      <field name="name">Powerfullcombat Heroes</field>
+      <field name="res_model">provaowerfull.hero</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="provaowerfull.buildings_action_window">
+      <field name="name">Powerfullcombat Buildings</field>
+      <field name="res_model">provaowerfull.building</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="provaowerfull.potions_action_window">
+      <field name="name">Powerfullcombat Potions</field>
+      <field name="res_model">provaowerfull.potion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
 
     <!-- server action to the one above -->
 <!--
@@ -41,20 +45,23 @@
 -->
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="provaowerfull" id="provaowerfull.menu_root"/>
--->
+
+    <menuitem name="Prova PowerfullCombat" id="provaowerfull.menu_root"/>
+
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="provaowerfull.menu_1" parent="provaowerfull.menu_root"/>
-    <menuitem name="Menu 2" id="provaowerfull.menu_2" parent="provaowerfull.menu_root"/>
--->
+    <menuitem name="Game" id="provaowerfull.game" parent="provaowerfull.menu_root"/>
+    <menuitem name="Battles" id="provaowerfull.battles" parent="provaowerfull.menu_root"/>
+
     <!-- actions -->
-<!--
-    <menuitem name="List" id="provaowerfull.menu_1_list" parent="provaowerfull.menu_1"
-              action="provaowerfull.action_window"/>
-    <menuitem name="Server to list" id="provaowerfull" parent="provaowerfull.menu_2"
-              action="provaowerfull.action_server"/>
--->
+
+    <menuitem name="Players" id="provaowerfull.players_list" parent="provaowerfull.game"
+              action="provaowerfull.players_action_window"/>
+    <menuitem name="Heroes" id="provaowerfull.heroes_list" parent="provaowerfull.game"
+              action="provaowerfull.heroes_action_window"/>
+    <menuitem name="Potions" id="provaowerfull.potions_list" parent="provaowerfull.game"
+              action="provaowerfull.potions_action_window"/>
+    <menuitem name="Buildings" id="provaowerfull.buildings_list" parent="provaowerfull.game"
+              action="provaowerfull.buildings_action_window"/>
+
   </data>
 </odoo>

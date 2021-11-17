@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="provaowerfull.hero_tree">
+            <field name="name">provaowerfull hero Tree</field>
+            <field name="model">provaowerfull.hero</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="stars"/>
+                    <field name="type"/>
+                    <field name="attack"/>
+                    <field name="defense"/>
+                    <field name="health"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.hero_form">
+            <field name="name">provaowerfull Hero Form</field>
+            <field name="model">provaowerfull.hero</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="hero_icon" widget="image"/>
+                        <group>
+                            <separator string="Hero Information"></separator>
+                            <field name="name"/>
+                            <field name="stars"/>
+                            <field name="type"/>    
+                            <field name="attack"/>
+                            <field name="defense"/>
+                            <field name="health"/>                       
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

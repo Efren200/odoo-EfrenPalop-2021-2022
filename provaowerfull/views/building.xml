@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="provaowerfull.building_tree">
+            <field name="name">provaowerfull building Tree</field>
+            <field name="model">provaowerfull.building</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="capacity"/>
+                    <field name="collection_minute"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.building_form">
+            <field name="name">provaowerfull building Form</field>
+            <field name="model">provaowerfull.building</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="building_icon" widget="image"/>
+                        <group>
+                            <separator string="Building Information"></separator>
+                            <field name="name"/>
+                            <field name="capacity"/>
+                            <field name="collection_minute"/>                          
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
