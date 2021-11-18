@@ -9,9 +9,9 @@ class hero(models.Model):
 
     name = fields.Char()
     stars = fields.Integer()
-    type = fields.Selection([('1','Plant'),('2','Fire'),('3','Water')])
-    attack = fields.Float()
-    defense = fields.Float()
-    health = fields.Float()
+    type = fields.Char()
+    attack = fields.Integer()
+    defense = fields.Integer()
+    health = fields.Integer()
     hero_icon = fields.Image(max_width=200, max_height=200)
 
