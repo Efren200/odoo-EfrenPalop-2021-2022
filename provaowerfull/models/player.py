@@ -69,12 +69,12 @@ class player(models.Model):
     #Funcion para poder comprar una pocion pequeña
     def buy_small_potion(self):
         for p in self:
-             
+
             if p.quantity_potions < 20 :
                 potion_id = self.env['provaowerfull.potion'].search([('name','=','Small Potion')])
                 if p.mana >= potion_id.mana_price :
                     p.mana = p.mana - potion_id.mana_price
-                    p.write({'potions': [(4,potion_id,0)]})
+                    p.write({'potions': [(4,potion_id.id,0)]})
                 else:
                     raise ValidationError('You dont have enough mana to buy the item')
             else:
