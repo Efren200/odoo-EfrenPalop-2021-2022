@@ -10,3 +10,4 @@ class building(models.Model):
     capacity = fields.Float()
     collection_minute = fields.Float()
     building_icon = fields.Image(max_width=200, max_height=200)
+    

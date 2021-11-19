@@ -9,6 +9,7 @@
                     <field name="attack_increase"/>
                     <field name="defense_increase"/>
                     <field name="health_increase"/>
+                    <field name="mana_price"/>
                 </tree>
             </field>
         </record>
@@ -25,7 +26,8 @@
                             <field name="name"/>  
                             <field name="attack_increase"/>
                             <field name="defense_increase"/>
-                            <field name="health_increase"/>                       
+                            <field name="health_increase"/>  
+                            <field name="mana_price"/>                    
                         </group>
                     </sheet>
                 </form>

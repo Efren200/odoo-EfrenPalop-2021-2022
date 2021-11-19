@@ -19,12 +19,12 @@ do
     echo "<field name='health'>$health</field>"
     if [[ $type = "Plant" ]];
     then
-        echo "<field name='hero_icon'>$(base64 hoja.jpg)</field>"
+        echo "<field name='hero_icon'>$(base64 images/hoja.jpg)</field>"
     elif [[ $type = "Water" ]];
     then    
-        echo "<field name='hero_icon'>$(base64 water.jpg)</field>"
+        echo "<field name='hero_icon'>$(base64 images/water.jpg)</field>"
     else
-        echo "<field name='hero_icon'>$(base64 fuego.jpg)</field>"
+        echo "<field name='hero_icon'>$(base64 images/fuego.jpg)</field>"
     fi
 
     echo "</record>"

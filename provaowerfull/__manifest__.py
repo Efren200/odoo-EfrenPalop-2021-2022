@@ -36,5 +36,6 @@
     'demo': [
         'demo/demo.xml',
         'demo/demo_heroes.xml',
+        'demo/demo_potions.xml',
     ],
 }

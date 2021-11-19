@@ -35,11 +35,8 @@
                           <field name="gems"/>
                         </group>
                         <group>
-                            <separator string="Laboratories"></separator>
-                            <separator string="Heroes Laboratory"></separator>
-                            <button type="object" string="Generate Hero"></button>
-                            <separator string="Potions Laboratory"></separator>
-                            <button type="object" string="Generate Potion"></button> 
+                          <separator string="Heroes Laboratory"></separator>
+                          <button name="random_hero" type="object" string="Generate Hero"></button>
                         </group>
                       </group>
                       <notebook>
@@ -49,6 +46,7 @@
                               <field name="name"/>
                               <field name="stars"/>
                               <field name="type"/>
+                              <button name="delete_hero" type="object" string="Delete Hero" class="oe_highlight" context="{'player': parent.id}"/>
                             </tree>
                           </field>
                         </page>
@@ -63,10 +61,31 @@
                             <field name="potions">
                               <tree>
                                 <field name="name"/>
+                                <field name="attack_increase"/>
+                                <field name="defense_increase"/>
+                                <field name="health_increase"/>
                               </tree>
                             </field>
                           </page>
                       </notebook>
+                    </sheet>
+                    <sheet>
+                      <separator string="Potions Shop"></separator>
+                      <group>
+                        <button name="buy_small_potion" type="object" string="Small Potion"></button>
+                        <button type="object" string="Big Potion"></button>
+                        <button type="object" string="Attack Potion"></button>
+                        <button type="object" string="Defense Potion"></button>
+                      </group>
+                      <separator string="Buildings Shop"></separator>
+                      <group>
+                        <button type="object" string="Goldmine"></button>
+                        <button type="object" string="Mana Colletctor"></button>
+                        <button type="object" string="Gem Mine"></button>
+                        <button type="object" string="Gold Store"></button>
+                        <button type="object" string="Mana Store"></button>
+                        <button type="object" string="Gems Store"></button>
+                      </group>
                     </sheet>
                     </form>
             </field>
