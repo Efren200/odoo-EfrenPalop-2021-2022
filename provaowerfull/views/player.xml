@@ -21,6 +21,7 @@
                       <field name="icon" widget="image"/>
                       <group>
                         <group>
+                          <button name="level_up" type="object" string="Level up"></button>
                           <separator string="Player Account Information"></separator>
                           <field name="name"/>
                           <field name="password"/>
@@ -54,6 +55,11 @@
                             <field name="buildings">
                               <tree>
                                 <field name="name"/>
+                                <field name="progress"/>
+                                <field name="level"/>
+                                <field name="state"/>
+                                <button name="delete_buildingplayer" type="object" string="Delete Building" class="oe_highlight" context="{'buildings': parent.id}"/>
+                                <button name="update_buildingplayer" type="object" string="Upgrade Building" class="oe_highlight" context="{'buildings': parent.id}"/>
                               </tree>
                             </field>
                           </page>
@@ -64,6 +70,7 @@
                                 <field name="attack_increase"/>
                                 <field name="defense_increase"/>
                                 <field name="health_increase"/>
+                                <button name="delete_potion" type="object" string="Delete Potion" class="oe_highlight" context="{'player': parent.id}"/>
                               </tree>
                             </field>
                           </page>
@@ -73,18 +80,15 @@
                       <separator string="Potions Shop"></separator>
                       <group>
                         <button name="buy_small_potion" type="object" string="Small Potion"></button>
-                        <button type="object" string="Big Potion"></button>
-                        <button type="object" string="Attack Potion"></button>
-                        <button type="object" string="Defense Potion"></button>
+                        <button name="buy_big_potion" type="object" string="Big Potion"></button>
+                        <button name="buy_attack_potion" type="object" string="Attack Potion"></button>
+                        <button name="buy_defense_potion" type="object" string="Defense Potion"></button>
                       </group>
                       <separator string="Buildings Shop"></separator>
                       <group>
-                        <button type="object" string="Goldmine"></button>
-                        <button type="object" string="Mana Colletctor"></button>
-                        <button type="object" string="Gem Mine"></button>
-                        <button type="object" string="Gold Store"></button>
-                        <button type="object" string="Mana Store"></button>
-                        <button type="object" string="Gems Store"></button>
+                        <button name="buy_gold_mine" type="object" string="Goldmine"></button>
+                        <button name="buy_mana_collector" type="object" string="Mana Colletctor"></button>
+                        <button name="buy_gem_mine" type="object" string="Gem Mine"></button>
                       </group>
                     </sheet>
                     </form>

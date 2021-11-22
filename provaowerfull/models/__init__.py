@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import building, player, potion, hero
+from . import building, player, potion, hero, buildingplayer

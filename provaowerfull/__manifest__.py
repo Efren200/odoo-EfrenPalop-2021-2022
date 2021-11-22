@@ -30,6 +30,7 @@
         'views/potion.xml',
         'views/hero.xml',
         'views/building.xml',
+        'views/buildingplayer.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
@@ -37,5 +38,6 @@
         'demo/demo.xml',
         'demo/demo_heroes.xml',
         'demo/demo_potions.xml',
+        'demo/demo_buildings.xml'
     ],
 }

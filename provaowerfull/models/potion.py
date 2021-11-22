@@ -13,3 +13,9 @@ class potion(models.Model):
     health_increase = fields.Float()
     mana_price = fields.Float()
     potion_icon = fields.Image(max_width=200, max_height=200)
+
+    #Funcion para borrar una pocion seleccionado
+    def delete_potion(self):
+        for p in self:
+            player = self.env['provaowerfull.player'].browse(self.env.context['player'])
+            player.write({'potions': [(3,p.id,0)]})

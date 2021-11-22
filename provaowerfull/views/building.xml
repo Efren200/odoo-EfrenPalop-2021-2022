@@ -8,6 +8,7 @@
                     <field name="name"/>
                     <field name="capacity"/>
                     <field name="collection_minute"/>
+                    <field name="gold_price"/>   
                 </tree>
             </field>
         </record>
@@ -23,7 +24,8 @@
                             <separator string="Building Information"></separator>
                             <field name="name"/>
                             <field name="capacity"/>
-                            <field name="collection_minute"/>                          
+                            <field name="collection_minute"/>
+                            <field name="gold_price"/>                                
                         </group>
                     </sheet>
                 </form>
