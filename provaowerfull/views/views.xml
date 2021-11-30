@@ -32,6 +32,24 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="provaowerfull.potionplayer_action_window">
+      <field name="name">Powerfullcombat Potion Player</field>
+      <field name="res_model">provaowerfull.potionplayer</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="provaowerfull.battles_action_window">
+      <field name="name">Powerfullcombat Battles</field>
+      <field name="res_model">provaowerfull.battles</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="provaowerfull.alliance_action_window">
+      <field name="name">Powerfullcombat Alliances</field>
+      <field name="res_model">provaowerfull.alliance</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
 
 
     <!-- server action to the one above -->
@@ -56,7 +74,8 @@
 
     <!-- menu categories -->
     <menuitem name="Game" id="provaowerfull.game" parent="provaowerfull.menu_root"/>
-    <menuitem name="Battles" id="provaowerfull.battles" parent="provaowerfull.menu_root"/>
+    <menuitem name="Battles" id="provaowerfull.battle_item" parent="provaowerfull.menu_root"/>
+    <menuitem name="Alliances" id="provaowerfull.alliance_item" parent="provaowerfull.menu_root"/>
 
     <!-- actions -->
 
@@ -70,6 +89,13 @@
               action="provaowerfull.buildings_action_window"/>
     <menuitem name="Buildings Players" id="provaowerfull.buildingsplayer_list" parent="provaowerfull.game"
               action="provaowerfull.buildingplayer_action_window"/>
+    <menuitem name="Potions Players" id="provaowerfull.potionplayer_list" parent="provaowerfull.game"
+              action="provaowerfull.potionplayer_action_window"/>
 
+    <menuitem name="Battles" id="provaowerfull.battles_list" parent="provaowerfull.battle_item"
+              action="provaowerfull.battles_action_window"/>
+
+    <menuitem name="Alliances" id="provaowerfull.alliance_list" parent="provaowerfull.alliance_item"
+              action="provaowerfull.alliance_action_window"/>
   </data>
 </odoo>

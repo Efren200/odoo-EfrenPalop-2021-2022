@@ -4,3 +4,6 @@ access_provaowerfull_building,provaowerfull.building,model_provaowerfull_buildin
 access_provaowerfull_potion,provaowerfull.potion,model_provaowerfull_potion,base.group_user,1,1,1,1
 access_provaowerfull_hero,provaowerfull.hero,model_provaowerfull_hero,base.group_user,1,1,1,1
 access_provaowerfull_buildingplayer,provaowerfull.buildingplayer,model_provaowerfull_buildingplayer,base.group_user,1,1,1,1
+access_provaowerfull_potionplayer,provaowerfull.potionplayer,model_provaowerfull_potionplayer,base.group_user,1,1,1,1
+access_provaowerfull_battles,provaowerfull.battles,model_provaowerfull_battles,base.group_user,1,1,1,1
+access_provaowerfull_alliance,provaowerfull.alliance,model_provaowerfull_alliance,base.group_user,1,1,1,1

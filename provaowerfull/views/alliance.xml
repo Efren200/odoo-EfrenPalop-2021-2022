@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="provaowerfull.alliance_tree">
+            <field name="name">provaowerfull alliance Tree</field>
+            <field name="model">provaowerfull.alliance</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.alliance_form">
+            <field name="name">provaowerfull alliance Form</field>
+            <field name="model">provaowerfull.alliance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <separator string="Alliance Information"></separator>
+                                <field name="name"/>                       
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

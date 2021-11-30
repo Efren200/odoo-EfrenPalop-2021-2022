@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="provaowerfull.battles_tree">
+            <field name="name">provaowerfull battles Tree</field>
+            <field name="model">provaowerfull.battles</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="p1_name"/>
+                    <field name="p2_name"/>
+                    <field name="winner_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.battles_form">
+            <field name="name">provaowerfull battles Form</field>
+            <field name="model">provaowerfull.battles</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <separator string="Player 1"></separator>
+                                <field name="player1"/>
+                                <field name="p1_hero1"/>
+                                <field name="p1_hero2"/>
+                                <field name="p1_hero3"/>
+                                <field name="p1_potion"/>                              
+                            </group>
+                            <group>
+                                <separator string="Player 2"></separator>
+                                <field name="player2"/>
+                                <field name="p2_hero1"/>
+                                <field name="p2_hero2"/>
+                                <field name="p2_hero3"/>
+                                <field name="p2_potion"/>                              
+                            </group>
+                        </group>
+                        <button  name = "battle_between_players" type="object" string="FIGHT"></button>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

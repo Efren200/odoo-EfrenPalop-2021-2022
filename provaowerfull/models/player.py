@@ -10,7 +10,7 @@ class player(models.Model):
     _name = 'provaowerfull.player'
     _description = 'Players'
 
-    name = fields.Char()
+    name = fields.Char(required=True)
     password = fields.Char(default=lambda s:secrets.token_urlsafe(10))
     level = fields.Integer(default=1)
     resources_capacity = fields.Integer(compute='_get_res_capacity')
@@ -22,10 +22,11 @@ class player(models.Model):
     registration_date = fields.Datetime()
     heroes = fields.Many2many('provaowerfull.hero')
     quantity_heroes = fields.Integer(compute='_get_q_heroes')
-    potions = fields.Many2many('provaowerfull.potion')
+    potions = fields.One2many('provaowerfull.potionplayer', 'player')
     quantity_potions = fields.Integer(compute='_get_q_potions')
     buildings = fields.One2many('provaowerfull.buildingplayer', 'player')
     quantity_buildings = fields.Integer(compute='_get_q_buildings')
+    alliance = fields.Many2one('provaowerfull.alliance' ,ondelete='set null', help='Alliance to which the player belongs')
 
     
     #Restriccion para controlar cuantos recursos tiene el usuario.
@@ -36,6 +37,7 @@ class player(models.Model):
             if p.gold > p.resources_capacity or p.mana > p.resources_capacity or p.gems > p.resources_capacity :
 
                 raise ValidationError('You cant have more resources than you can store')
+
 
     #Metodo para saber cual sera la capacidad maxima de recursos que podra tener el player
     @api.depends('level')
@@ -93,58 +95,58 @@ class player(models.Model):
     def buy_small_potion(self):
         for p in self:
 
-            if p.quantity_potions < 4 :
-                potion_id = self.env['provaowerfull.potion'].search([('name','=','Small Potion')])
-                if p.mana >= potion_id.mana_price :
-                    p.mana = p.mana - potion_id.mana_price
-                    p.write({'potions': [(4,potion_id.id,0)]})
+            if p.quantity_potions < 20 :
+                potion = self.env['provaowerfull.potion'].search([('name','=','Small Potion')])
+                if p.mana >= potion.mana_price :
+                    p.mana = p.mana - potion.mana_price
+                    self.env['provaowerfull.potionplayer'].create({'player':p.id,'potion': potion.id})
                 else:
                     raise ValidationError('You dont have enough mana to buy the item')
             else:
-                raise ValidationError('You cannot have more than 4 potions. Delete some')
+                raise ValidationError('You cannot have more than 20 potions. Delete some')
 
     #Funcion para poder comprar una pocion grande
     def buy_big_potion(self):
         for p in self:
 
-            if p.quantity_potions < 4 :
-                potion_id = self.env['provaowerfull.potion'].search([('name','=','Big Potion')])
-                if p.mana >= potion_id.mana_price :
-                    p.mana = p.mana - potion_id.mana_price
-                    p.write({'potions': [(4,potion_id.id,0)]})
+            if p.quantity_potions < 20 :
+                potion = self.env['provaowerfull.potion'].search([('name','=','Big Potion')])
+                if p.mana >= potion.mana_price :
+                    p.mana = p.mana - potion.mana_price
+                    self.env['provaowerfull.potionplayer'].create({'player':p.id,'potion': potion.id})
                 else:
                     raise ValidationError('You dont have enough mana to buy the item')
             else:
-                raise ValidationError('You cannot have more than 4 potions. Delete some')
+                raise ValidationError('You cannot have more than 20 potions. Delete some')
 
     
     #Funcion para poder comprar una pocion de ataque
     def buy_attack_potion(self):
         for p in self:
 
-            if p.quantity_potions < 4 :
-                potion_id = self.env['provaowerfull.potion'].search([('name','=','Attack Potion')])
-                if p.mana >= potion_id.mana_price :
-                    p.mana = p.mana - potion_id.mana_price
-                    p.write({'potions': [(4,potion_id.id,0)]})
+            if p.quantity_potions < 20 :
+                potion = self.env['provaowerfull.potion'].search([('name','=','Attack Potion')])
+                if p.mana >= potion.mana_price :
+                    p.mana = p.mana - potion.mana_price
+                    self.env['provaowerfull.potionplayer'].create({'player':p.id,'potion': potion.id})
                 else:
                     raise ValidationError('You dont have enough mana to buy the item')
             else:
-                raise ValidationError('You cannot have more than 4 potions. Delete some')
+                raise ValidationError('You cannot have more than 20 potions. Delete some')
 
     #Funcion para poder comprar una pocion de ataque
     def buy_defense_potion(self):
         for p in self:
 
-            if p.quantity_potions < 4 :
-                potion_id = self.env['provaowerfull.potion'].search([('name','=','Defense Potion')])
-                if p.mana >= potion_id.mana_price :
-                    p.mana = p.mana - potion_id.mana_price
-                    p.write({'potions': [(4,potion_id.id,0)]})
+            if p.quantity_potions < 20 :
+                potion = self.env['provaowerfull.potion'].search([('name','=','Defense Potion')])
+                if p.mana >= potion.mana_price :
+                    p.mana = p.mana - potion.mana_price
+                    self.env['provaowerfull.potionplayer'].create({'player':p.id,'potion': potion.id})
                 else:
                     raise ValidationError('You dont have enough mana to buy the item')
             else:
-                raise ValidationError('You cannot have more than 4 potions. Delete some')
+                raise ValidationError('You cannot have more than 20 potions. Delete some')
 
     #Funcion para poder comprar una mina de oro
     def buy_gold_mine(self):

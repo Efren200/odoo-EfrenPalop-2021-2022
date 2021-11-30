@@ -31,7 +31,10 @@
         'views/hero.xml',
         'views/building.xml',
         'views/buildingplayer.xml',
+        'views/potionplayer.xml',
         'views/templates.xml',
+        'views/battles.xml',
+        'views/alliance.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

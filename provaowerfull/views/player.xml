@@ -70,7 +70,7 @@
                                 <field name="attack_increase"/>
                                 <field name="defense_increase"/>
                                 <field name="health_increase"/>
-                                <button name="delete_potion" type="object" string="Delete Potion" class="oe_highlight" context="{'player': parent.id}"/>
+                                <button name="delete_potionplayer" type="object" string="Delete Potion" class="oe_highlight" context="{'player': parent.id}"/>
                               </tree>
                             </field>
                           </page>
