@@ -31,5 +31,38 @@
                 </form>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="provaowerfull.building_kanban">
+            <field name="name">provaowerfull building kanban</field>
+            <field name="model">provaowerfull.building</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">                     
+                                <a type="open">
+                                    <img alt="Building Icon" class="ow_kanban_image"
+                                        t-att-src="kanban_image('provaowerfull.building', 'building_icon', record.id.value)"
+                                        width="100" height="100" />
+                                </a>
+                                <div t-attf-class="oe_kanban_content">
+                                    <h4>
+                                        <a type="edit">
+                                            <field name="name"></field>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li>Capacity: <field name="capacity"></field></li>
+                                        <li>Collection/Minute: <field name="collection_minute"></field></li>
+                                        <li>Gold Price: <field name="gold_price"></field></li>
+                                    </ul>
+                                </div>                   
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
     </data>
 </odoo>

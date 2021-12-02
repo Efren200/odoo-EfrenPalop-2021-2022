@@ -13,29 +13,30 @@
     <record model="ir.actions.act_window" id="provaowerfull.heroes_action_window">
       <field name="name">Powerfullcombat Heroes</field>
       <field name="res_model">provaowerfull.hero</field>
+      <field name="context">{"search_default_bestAttack":1}</field>
       <field name="view_mode">tree,form</field>
     </record>
     <record model="ir.actions.act_window" id="provaowerfull.buildings_action_window">
       <field name="name">Powerfullcombat Buildings</field>
       <field name="res_model">provaowerfull.building</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
     <record model="ir.actions.act_window" id="provaowerfull.potions_action_window">
       <field name="name">Powerfullcombat Potions</field>
       <field name="res_model">provaowerfull.potion</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record model="ir.actions.act_window" id="provaowerfull.buildingplayer_action_window">
       <field name="name">Powerfullcombat Building Player</field>
       <field name="res_model">provaowerfull.buildingplayer</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban,calendar</field>
     </record>
 
     <record model="ir.actions.act_window" id="provaowerfull.potionplayer_action_window">
       <field name="name">Powerfullcombat Potion Player</field>
       <field name="res_model">provaowerfull.potionplayer</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record model="ir.actions.act_window" id="provaowerfull.battles_action_window">
@@ -70,7 +71,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Prova PowerfullCombat" id="provaowerfull.menu_root"/>
+    <menuitem name="PowerfullCombat" id="provaowerfull.menu_root"/>
 
     <!-- menu categories -->
     <menuitem name="Game" id="provaowerfull.game" parent="provaowerfull.menu_root"/>

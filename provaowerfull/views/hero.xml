@@ -4,7 +4,8 @@
             <field name="name">provaowerfull hero Tree</field>
             <field name="model">provaowerfull.hero</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-warning="stars==1" decoration-muted="stars==2" decoration-info="stars==3"
+                        decoration-danger="stars==4"  decoration-primary="stars==5">
                     <field name="name"/>
                     <field name="stars"/>
                     <field name="type"/>
@@ -33,6 +34,27 @@
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.hero_search">
+            <field name="name">provaowerfull hero Tree</field>
+            <field name="model">provaowerfull.hero</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="stars"/>
+                    <field name="stars" string="Min Stars" filter_domain="[('stars','>=',self)]"/>
+                    <field name="type"/>
+                    <field name="attack"/>
+                    <field name="defense"/>
+                    <field name="health"/>
+                    <filter name="bestAttack" string="Heroes Bests Attack" domain="[('attack','&gt;=',450)]"></filter>
+                    <filter name="bestDefense" string="Heroes Bests Defense" domain="[('defense','&gt;=',450)]"></filter>
+                    <filter name="bestHealth" string="Heroes Bests Health" domain="[('health','&gt;=',1300)]"></filter>
+                    <filter name="bestHeroes" string="Best Heroes" domain="[('stars','=',5), ('health','&gt;=',600),('defense','&gt;=',130), ('attack','&gt;=',115)]"></filter>
+                    <filter name="group_by_type" string="Group By Type" context="{'group_by': 'type'}"></filter>
+                </search>
             </field>
         </record>
     </data>

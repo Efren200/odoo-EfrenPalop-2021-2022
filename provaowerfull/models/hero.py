@@ -13,7 +13,7 @@ class hero(models.Model):
     attack = fields.Integer()
     defense = fields.Integer()
     health = fields.Integer()
-    hero_icon = fields.Image(max_width=200, max_height=200)
+    hero_icon = fields.Image(max_width=100, max_height=100)
     players = fields.Many2many('provaowerfull.player')
 
 

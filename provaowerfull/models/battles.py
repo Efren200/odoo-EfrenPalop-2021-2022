@@ -88,8 +88,6 @@ class potionplayer(models.Model):
             health_p1 -=  attack_p2 - defense_p1 
             health_p2 -= attack_p1 - defense_p2
 
-            print("Vida restante: " + health_p1)
-            print("Vida restante: " + health_p2)
             if health_p1 <=0:
                 ganador_p2 = True
 

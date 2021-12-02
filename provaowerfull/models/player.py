@@ -19,7 +19,7 @@ class player(models.Model):
     gems = fields.Integer(default=0)
     trophies = fields.Integer(default=0)
     icon = fields.Image(max_width=200, max_height=200)
-    registration_date = fields.Datetime()
+    last_connection = fields.Date()
     heroes = fields.Many2many('provaowerfull.hero')
     quantity_heroes = fields.Integer(compute='_get_q_heroes')
     potions = fields.One2many('provaowerfull.potionplayer', 'player')
@@ -27,6 +27,7 @@ class player(models.Model):
     buildings = fields.One2many('provaowerfull.buildingplayer', 'player')
     quantity_buildings = fields.Integer(compute='_get_q_buildings')
     alliance = fields.Many2one('provaowerfull.alliance' ,ondelete='set null', help='Alliance to which the player belongs')
+
 
     
     #Restriccion para controlar cuantos recursos tiene el usuario.

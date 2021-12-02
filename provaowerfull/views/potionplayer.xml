@@ -5,8 +5,8 @@
             <field name="model">provaowerfull.potionplayer</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="player_name"/>
-                    <field name="name"/>
+                    <field string="Player" name="player_name"/>
+                    <field string="Potion" name="name"/>
                     <field name="attack_increase"/>
                     <field name="defense_increase"/>
                     <field name="health_increase"/>   
@@ -30,6 +30,55 @@
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.potionplayer_kanban">
+            <field name="name">provaowerfull potionplayer kanban</field>
+            <field name="model">provaowerfull.potionplayer</field>
+            <field name="arch" type="xml">
+                <kanban default_order="name" default_group_by="potion">
+                    <field name="id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">                     
+                                <a type="open">
+                                    <img alt="Potion Icon" class="ow_kanban_image"
+                                        t-att-src="kanban_image('provaowerfull.potionplayer', 'potion_icon', record.id.value)"
+                                        width="50" height="50" />
+                                </a>
+                                <div t-attf-class="oe_kanban_content">
+                                    <h4>
+                                        <a type="edit">
+                                            <field name="name"></field>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li><field name="player_name"/></li>
+                                        <li>Attack Increase: <field name="attack_increase"></field></li>
+                                        <li>Defense Increase: <field name="defense_increase"></field></li>
+                                        <li>Health Increase: <field name="health_increase"></field></li>
+                                        <li>Mana Price: <field name="mana_price"></field></li>
+                                    </ul>
+                                </div>                   
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.potionplayer_search">
+            <field name="name">provaowerfull potionplayer Tree</field>
+            <field name="model">provaowerfull.potionplayer</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="player_name"/>
+                    <field name="attack_increase"/>
+                    <field name="defense_increase"/>
+                    <field name="health_increase"/>
+                    <field name="mana_price"/>
+                </search>
             </field>
         </record>
     </data>

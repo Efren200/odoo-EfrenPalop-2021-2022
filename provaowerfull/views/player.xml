@@ -18,16 +18,19 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                      <field name="icon" widget="image"/>
+                      <header>
+                        <field name="icon" widget="image"/>
+                        <button name="level_up" type="object" string="Level up"></button>
+                      </header>
+                      
                       <group>
                         <group>
-                          <button name="level_up" type="object" string="Level up"></button>
                           <separator string="Player Account Information"></separator>
                           <field name="name"/>
                           <field name="password"/>
-                          <field name="registration_date"/>
                           <field name="trophies"/>
                           <field name="level"/>
+                          <field name="alliance"/>                    
                         </group>
                         <group>
                           <separator string="Resources"></separator>
@@ -52,26 +55,78 @@
                           </field>
                         </page>
                         <page string="Buildings">
-                            <field name="buildings">
-                              <tree>
+                            <field name="buildings" mode="kanban">
+                              <kanban>
                                 <field name="name"/>
                                 <field name="progress"/>
                                 <field name="level"/>
                                 <field name="state"/>
-                                <button name="delete_buildingplayer" type="object" string="Delete Building" class="oe_highlight" context="{'buildings': parent.id}"/>
-                                <button name="update_buildingplayer" type="object" string="Upgrade Building" class="oe_highlight" context="{'buildings': parent.id}"/>
-                              </tree>
+                                <field name="id" />
+                                <templates>
+                                  <t t-name="kanban-box">
+                                    <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
+                                      <a type="open">
+                                        <img alt ="Building Icon" class="ow_kanban_image"
+                                            t-att-src="kanban_image('provaowerfull.buildingplayer', 'building_icon', record.id.value)"
+                                            width="50" height="50" />
+                                      </a>
+                                      <div class="oe_kanban_details d-flex flex-column">
+                                        <a type="open"><h4
+                                                class="o_kanban_record_title oe_partner_heading"><field
+                                                name="name"/></h4></a>
+                                        <ul>
+                                          <li>Capacity: <field name="capacity"></field></li>
+                                          <li>Collection/Minute: <field name="collection_minute"></field></li>
+                                          <li>Level: <field name="level"></field></li>
+
+                                        </ul>
+                                      </div>
+                                      <div class="oe_kanban_details d-flex flex-column">
+                                        <button name="delete_buildingplayer" type="object" string="Delete Building" class="btn btn-secondary" context="{'buildings': parent.id}">Delete Building</button>
+                                        <button name="update_buildingplayer" type="object" string="Upgrade Building" class="btn btn-secondary" context="{'buildings': parent.id}">Upgrade Building</button>
+                                      </div>
+                                      
+                                    </div>
+                                  </t>
+                                </templates>
+                              </kanban> 
                             </field>
                           </page>
                           <page string="Potions">
-                            <field name="potions">
-                              <tree>
+                            <field name="potions" mode="kanban">
+                              <kanban>
                                 <field name="name"/>
                                 <field name="attack_increase"/>
                                 <field name="defense_increase"/>
                                 <field name="health_increase"/>
-                                <button name="delete_potionplayer" type="object" string="Delete Potion" class="oe_highlight" context="{'player': parent.id}"/>
-                              </tree>
+                                <field name="id" />
+                                <templates>
+                                  <t t-name="kanban-box">
+                                    <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
+                                      <a type="open">
+                                        <img alt ="Building Icon" class="ow_kanban_image"
+                                            t-att-src="kanban_image('provaowerfull.potionplayer', 'potion_icon', record.id.value)"
+                                            width="50" height="50" />
+                                      </a>
+                                      <div class="oe_kanban_details d-flex flex-column">
+                                        <a type="open"><h4
+                                                class="o_kanban_record_title oe_partner_heading"><field
+                                                name="name"/></h4></a>
+                                        <ul>
+                                          <li>Attack Increase: <field name="attack_increase"></field></li>
+                                          <li>Defense Increase: <field name="defense_increase"></field></li>
+                                          <li>Health Increase: <field name="health_increase"></field></li>
+
+                                        </ul>
+                                      </div>
+                                      <div class="oe_kanban_details d-flex flex-column">
+                                        <button name="delete_potionplayer" type="object" string="Delete Potion" class="btn btn-secondary" context="{'player': parent.id}">Delete Potion</button>
+                                      </div>
+                                      
+                                    </div>
+                                  </t>
+                                </templates>
+                              </kanban> 
                             </field>
                           </page>
                       </notebook>

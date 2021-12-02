@@ -19,6 +19,9 @@
             <field name="model">provaowerfull.buildingplayer</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="state" widget="statusbar"></field>
+                    </header>
                     <sheet>
                         <group>
                             <separator string="Building Player Information"></separator>
@@ -26,10 +29,77 @@
                             <field name="name"/>
                             <field name="capacity"/>
                             <field name="collection_minute"/>
-                            <field name="level"/>                                
+                            <field name="level"/>  
+                            <field name="date_start"/>     
+                            <field name="date_end"/> 
+                            <field name="progress" widget="progressbar"/>                             
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.buildingplayer_kanban">
+            <field name="name">provaowerfull buildingplayer kanban</field>
+            <field name="model">provaowerfull.buildingplayer</field>
+            <field name="arch" type="xml">
+                <kanban default_order="name" default_group_by="building">
+                    <field name="id" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">                     
+                                <a type="open">
+                                    <img alt ="Building Icon" class="ow_kanban_image"
+                                        t-att-src="kanban_image('provaowerfull.buildingplayer', 'building_icon', record.id.value)"
+                                        width="50" height="50" />
+                                </a>
+                                <div t-attf-class="oe_kanban_content">
+                                    <h4>
+                                        <a type="edit">
+                                            <field name="name"></field>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li>Player Name:<field name="player_name"/></li>
+                                        <li>Building Name:<field name="name"></field></li>
+                                        <li>Capacity: <field name="capacity"></field></li>
+                                        <li>Collection/Minute: <field name="collection_minute"></field></li>
+                                        <li>Level: <field name="level"></field></li>
+                                    </ul>
+                                </div>                   
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.buildingplayer_search">
+            <field name="name">provaowerfull buildingplayer Search</field>
+            <field name="model">provaowerfull.buildingplayer</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="player_name"/>
+                    <field name="name"/>
+                    <field name="capacity"/>
+                    <field name="collection_minute"/>
+                    <field name="level"/>
+                    <field name="level" string="Min Level" filter_domain="[('level','>=',self)]"/>
+                    <filter name="bestLevel" string="Player Building Level" domain="[('level','&gt;=',3)]"></filter>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.buildingplayer_calendar">
+            <field name="name">provaowerfull buildingplayer Calendar</field>
+            <field name="model">provaowerfull.buildingplayer</field>
+            <field name="arch" type="xml">
+                <calendar string="Building Upgrade" date_start="date_start"
+                                date_stop="date_end"
+                                color="building">
+                                <field name="player_name"></field>
+                                <field name="name"></field>
+                </calendar>                          
             </field>
         </record>
     </data>

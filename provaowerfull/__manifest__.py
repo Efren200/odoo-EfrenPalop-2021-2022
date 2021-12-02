@@ -41,6 +41,7 @@
         'demo/demo.xml',
         'demo/demo_heroes.xml',
         'demo/demo_potions.xml',
+        'demo/demo_players.xml',
         'demo/demo_buildings.xml'
     ],
 }
