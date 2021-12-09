@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+    <record id="examen.viatges_tree" model="ir.ui.view">
+        <field name="name">Examen viatges tree</field>
+        <field name="model">examen.viatge</field>
+        <field name="arch" type="xml">
+            <tree string="viatge">
+           
+                    <field name="conductor" />
+                    <field name="identificador" />
+                    <field name="furgoneta" />
+                    <field name="paquets" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="examen.viatge_search">
+        <field name="name">examen viatge  Search</field>
+        <field name="model">examen.viatge</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="conductor"/>
+                <field name="identificador"/>
+                <field name="furgoneta"/>
+                <field name="paquets"/>
+                <filter name="group_by_furgoneta" string="Group By Furgoneta" context="{'group_by': 'furgoneta'}"></filter>
+            </search>
+        </field>
+    </record>
+
+</data>
+</odoo>

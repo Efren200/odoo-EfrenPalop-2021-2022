@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="examen.furgoneta_tree" model="ir.ui.view">
+            <field name="name">Examen furgoneta tree</field>
+            <field name="model">examen.furgoneta</field>
+            <field name="arch" type="xml">
+                <tree string="furgoneta">
+               
+                        <field name="name" />
+                        <field name="capacitat" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="examen.furgonetes_form" model="ir.ui.view">
+            <field name="name">Examen furgonetes form</field>
+            <field name="model">examen.furgoneta</field>
+            <field name="arch" type="xml">
+                <form string="furgoneta">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="image" widget="image"/>
+                            </group>
+                         <group>
+                            <field name="capacitat" />
+                            <field name="viatges" />
+                            <field name="paquets" />
+                         </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+    
+
+</odoo>

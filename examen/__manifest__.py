@@ -27,6 +27,9 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/furgonetes.xml',
+        'views/viatges.xml',
+        'views/paquets.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
