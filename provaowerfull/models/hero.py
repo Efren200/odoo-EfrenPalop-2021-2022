@@ -14,13 +14,13 @@ class hero(models.Model):
     defense = fields.Integer()
     health = fields.Integer()
     hero_icon = fields.Image(max_width=100, max_height=100)
-    players = fields.Many2many('provaowerfull.player')
+    players = fields.Many2many('res.partner')
 
 
 
     #Funcion para borrar un heroe seleccionado
     def delete_hero(self):
         for h in self:
-            player = self.env['provaowerfull.player'].browse(self.env.context['player'])
+            player = self.env['res.partner'].browse(self.env.context['player'])
             player.write({'heroes': [(3,h.id,0)]})
 

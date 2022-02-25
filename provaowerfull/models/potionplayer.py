@@ -4,7 +4,7 @@ class potionplayer(models.Model):
     _name = 'provaowerfull.potionplayer'
     _description = 'Potion / Player'
 
-    player = fields.Many2one('provaowerfull.player', ondelete='set null')
+    player = fields.Many2one('res.partner', ondelete='set null')
     player_name = fields.Char(related="player.name")
     potion = fields.Many2one('provaowerfull.potion', ondelete='set null')
     potion_icon = fields.Image(related="potion.potion_icon")

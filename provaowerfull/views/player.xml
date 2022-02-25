@@ -2,7 +2,7 @@
     <data>
         <record model="ir.ui.view" id="provaowerfull.player_tree">
             <field name="name">provaowerfull player Tree</field>
-            <field name="model">provaowerfull.player</field>
+            <field name="model">res.partner</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -14,12 +14,12 @@
 
         <record model="ir.ui.view" id="provaowerfull.player_form">
             <field name="name">provaowerfull player Form</field>
-            <field name="model">provaowerfull.player</field>
+            <field name="model">res.partner</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                       <header>
-                        <field name="icon" widget="image"/>
+                        <field name="image_1920" widget="image"/>
                         <button name="level_up" type="object" string="Level up"></button>
                       </header>
                       
@@ -40,6 +40,7 @@
                         </group>
                         <group>
                           <separator string="Heroes Laboratory"></separator>
+                          <field name="tiempo_que_queda"/>
                           <button name="random_hero" type="object" string="Generate Hero"></button>
                         </group>
                       </group>
@@ -58,9 +59,7 @@
                             <field name="buildings" mode="kanban">
                               <kanban>
                                 <field name="name"/>
-                                <field name="progress"/>
                                 <field name="level"/>
-                                <field name="state"/>
                                 <field name="id" />
                                 <templates>
                                   <t t-name="kanban-box">
@@ -84,6 +83,8 @@
                                       <div class="oe_kanban_details d-flex flex-column">
                                         <button name="delete_buildingplayer" type="object" string="Delete Building" class="btn btn-secondary" context="{'buildings': parent.id}">Delete Building</button>
                                         <button name="update_buildingplayer" type="object" string="Upgrade Building" class="btn btn-secondary" context="{'buildings': parent.id}">Upgrade Building</button>
+                                        
+                                        <button name="recolectar" type="object" string="Recolectar" class="btn btn-secondary" context="{'buildings': parent.id}">Recolectar</button>
                                       </div>
                                       
                                     </div>

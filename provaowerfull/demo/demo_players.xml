@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <record id='player1' model='provaowerfull.player'>
+        <record id='player1' model='res.partner'>
             <field name='name'>Marco Balaguer</field>
             <field name="heroes" eval="[(6,0,[ref('provaowerfull.hero1'),ref('provaowerfull.hero2'),ref('provaowerfull.hero3')])] "></field>
             <field name="icon">/9j/4AAQSkZJRgABAQEAkACQAAD/4QA6RXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQA
@@ -86,7 +86,7 @@
                 RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
                 ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//2Q==</field>
         </record>
-        <record id='player2' model='provaowerfull.player'>
+        <record id='player2' model='res.partner'>
             <field name='name'>Antonio Miguel</field>
             <field name="heroes" eval="[(6,0,[ref('provaowerfull.hero1'),ref('provaowerfull.hero2'),ref('provaowerfull.hero3')])] "></field>
             <field name="icon">/9j/4AAQSkZJRgABAQEAkACQAAD/4QA6RXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQA
@@ -172,7 +172,7 @@
                 RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
                 ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//2Q==</field>
         </record>
-        <record id='player3' model='provaowerfull.player'>
+        <record id='player3' model='res.partner'>
             <field name='name'>Francisco Luis</field>
             <field name="heroes" eval="[(6,0,[ref('provaowerfull.hero1'),ref('provaowerfull.hero2'),ref('provaowerfull.hero3')])] "></field>
             <field name="icon">/9j/4AAQSkZJRgABAQEAkACQAAD/4QA6RXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQA
@@ -258,7 +258,7 @@
                 RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
                 ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//2Q==</field>
         </record>
-        <record id='player4' model='provaowerfull.player'>
+        <record id='player4' model='res.partner'>
             <field name='name'>Lara</field>
             <field name="heroes" eval="[(6,0,[ref('provaowerfull.hero1'),ref('provaowerfull.hero2'),ref('provaowerfull.hero3')])] "></field>
             <field name="icon">/9j/4AAQSkZJRgABAQEAkACQAAD/4QA6RXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQA
@@ -344,7 +344,7 @@
                 RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
                 ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//2Q==</field>
         </record>
-        <record id='player5' model='provaowerfull.player'>
+        <record id='player5' model='res.partner'>
             <field name='name'>Emiliana Cobo</field>
             <field name="heroes" eval="[(6,0,[ref('provaowerfull.hero1'),ref('provaowerfull.hero2'),ref('provaowerfull.hero3')])] "></field>
             <field name="icon">/9j/4AAQSkZJRgABAQEAkACQAAD/4QA6RXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQA
@@ -430,7 +430,7 @@
                 RQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
                 ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAH//2Q==</field>
         </record>
-        <record id='player6' model='provaowerfull.player'>
+        <record id='player6' model='res.partner'>
             <field name='name'>Camilo Ferrando</field>
             <field name="heroes" eval="[(6,0,[ref('provaowerfull.hero1'),ref('provaowerfull.hero2'),ref('provaowerfull.hero3')])] "></field>
             <field name="icon">/9j/4AAQSkZJRgABAQEAkACQAAD/4QA6RXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQA

@@ -6,10 +6,10 @@ class alliance(models.Model):
     _description = "Alliance"
 
     name = fields.Char(required=True)
-    players = fields.One2many(comodel_name='provaowerfull.player', inverse_name='alliance')
+    players = fields.One2many(comodel_name='res.partner', inverse_name='alliance')
 
-    player1 = fields.Many2one('provaowerfull.player')
-    player2 = fields.Many2one('provaowerfull.player')
+    player1 = fields.Many2one('res.partner')
+    player2 = fields.Many2one('res.partner')
 
     p1_potion = fields.Many2one('provaowerfull.potionplayer')
     p2_potion = fields.Many2one('provaowerfull.potionplayer')

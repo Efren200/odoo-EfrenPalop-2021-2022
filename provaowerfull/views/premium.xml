@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="provaowerfull.player_inherit_premium_provaowerfull_form">
+            <field name="name">provaowerfull player inherit premium form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="provaowerfull.player_form"></field>
+            <field name="arch" type="xml">
+                <field name="alliance" position="after">
+                    <field name="is_premium"/>
+                    <field name="date_end"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.product_inherit_form">
+            <field name="name">provaowerfull product template inherit premium form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"></field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="PowerfullCombat">
+                        <group>
+                            <field name="is_premium"/>
+                            <field name="minutes_premium"/>
+
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.sale_inherit_form">
+            <field name="name">provaowerfull sale inherit premium form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"></field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="PowerfullCombat">
+                        <group>
+                            <field name="premium_applied"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record model="product.product" id="provaowerfull.premium_product">
+
+            <field name="name">40 Minutes Premium</field>
+            <field name="is_premium">True</field>
+            <field name="minutes_premium">40</field>
+            <field name="type">service</field>
+            <field name="list_price">4.99</field>
+
+        </record>
+
+
+        <record model="ir.cron" forcecreate="True" id="provaowerfull.cron_players_premium">
+            <field name="name">Provaowerfull: Cron Players premium</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="state">code</field>
+            <field name="code">model.check_premium()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="activity_user_type">specific</field>
+            <field name="doall" eval="False" />
+        </record>
+    </data>
+</odoo>

@@ -7,14 +7,31 @@
 
     <record model="ir.actions.act_window" id="provaowerfull.players_action_window">
       <field name="name">Powerfullcombat Players</field>
-      <field name="res_model">provaowerfull.player</field>
+      <field name="res_model">res.partner</field>
       <field name="view_mode">tree,form</field>
     </record>
+
+    <!-- Vistes heredades de player -->
+    <record model="ir.actions.act_window.view" id="provaowerfull.players_action_window_tree">
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="provaowerfull.player_tree"/>
+      <field name="act_window_id" ref="provaowerfull.players_action_window"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="provaowerfull.players_action_window_form">
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="provaowerfull.player_form"/>
+      <field name="act_window_id" ref="provaowerfull.players_action_window"/>
+    </record>
+
+
+
+
     <record model="ir.actions.act_window" id="provaowerfull.heroes_action_window">
       <field name="name">Powerfullcombat Heroes</field>
       <field name="res_model">provaowerfull.hero</field>
       <field name="context">{"search_default_bestAttack":1}</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,graph</field>
     </record>
     <record model="ir.actions.act_window" id="provaowerfull.buildings_action_window">
       <field name="name">Powerfullcombat Buildings</field>
@@ -30,7 +47,7 @@
     <record model="ir.actions.act_window" id="provaowerfull.buildingplayer_action_window">
       <field name="name">Powerfullcombat Building Player</field>
       <field name="res_model">provaowerfull.buildingplayer</field>
-      <field name="view_mode">tree,form,kanban,calendar</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
 
     <record model="ir.actions.act_window" id="provaowerfull.potionplayer_action_window">

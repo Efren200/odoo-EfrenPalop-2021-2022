@@ -20,13 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'mail', 'sale'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
         'views/player.xml',
+        'views/views.xml',
         'views/potion.xml',
         'views/hero.xml',
         'views/building.xml',
@@ -35,13 +35,14 @@
         'views/templates.xml',
         'views/battles.xml',
         'views/alliance.xml',
+        'views/premium.xml',
+        'crons/crons.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
         'demo/demo_heroes.xml',
         'demo/demo_potions.xml',
-        'demo/demo_players.xml',
         'demo/demo_buildings.xml'
     ],
 }

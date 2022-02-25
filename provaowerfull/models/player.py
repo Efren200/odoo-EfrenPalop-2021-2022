@@ -7,10 +7,11 @@ from odoo.exceptions import ValidationError
 
 
 class player(models.Model):
-    _name = 'provaowerfull.player'
-    _description = 'Players'
+    _name = 'res.partner'
+    _inherit = 'res.partner'
+    #_description = 'Players'
 
-    name = fields.Char(required=True)
+    #name = fields.Char(required=True)
     password = fields.Char(default=lambda s:secrets.token_urlsafe(10))
     level = fields.Integer(default=1)
     resources_capacity = fields.Integer(compute='_get_res_capacity')
@@ -27,6 +28,8 @@ class player(models.Model):
     buildings = fields.One2many('provaowerfull.buildingplayer', 'player')
     quantity_buildings = fields.Integer(compute='_get_q_buildings')
     alliance = fields.Many2one('provaowerfull.alliance' ,ondelete='set null', help='Alliance to which the player belongs')
+
+    tiempo_que_queda = fields.Integer()
 
 
     
@@ -61,28 +64,35 @@ class player(models.Model):
     #Funcion para generar un heroe aleatorio
     def random_hero(self):
         for p in self:
-            random_prob = random.randint(1, 100)
 
-            if p.quantity_heroes < 100 :
-                if random_prob > 0 and random_prob < 40:
-                    hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',1)]).ids)
+            if p.tiempo_que_queda <= 0:
 
-                elif random_prob > 40 and random_prob < 65:
-                    hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',2)]).ids)
+                p.tiempo_que_queda = 4000
+                random_prob = random.randint(1, 100)
 
-                elif random_prob > 65 and random_prob < 85:
-                    hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',3)]).ids)
+                if p.quantity_heroes < 100 :
+                    if random_prob >= 0 and random_prob <= 40:
+                        hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',1)]).ids)
 
-                elif random_prob > 85 and random_prob < 97:
-                    hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',4)]).ids)
+                    elif random_prob >= 41 and random_prob <= 65:
+                        hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',2)]).ids)
+
+                    elif random_prob >= 66 and random_prob <= 85:
+                        hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',3)]).ids)
+
+                    elif random_prob >= 86 and random_prob <= 97:
+                        hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',4)]).ids)
+            
+                    else:
+                        hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',5)]).ids)
+
+                    p.write({'heroes': [(4,hero_id,0)]})
             
                 else:
-                    hero_id = random.choice(self.env['provaowerfull.hero'].search([('stars','=',5)]).ids)
+                    raise ValidationError('You cannot have more than 100 heroes. Delete some')
 
-                p.write({'heroes': [(4,hero_id,0)]})
-            
             else:
-                raise ValidationError('You cannot have more than 100 heroes. Delete some')
+                raise ValidationError('You cant spawn a hero yet')
 
 
     #Metodo para contar cuantos heroes tiene el player
@@ -208,7 +218,19 @@ class player(models.Model):
                 raise ValidationError('You cannot have money to get the level up')
 
 
+
+    def habilita_heroe(self):
+
+        for p in self.search([]):
+
+            p.tiempo_que_queda -= 1
+
+
+
             
+
+            
+
 
 
 

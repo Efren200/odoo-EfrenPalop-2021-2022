@@ -5,9 +5,9 @@ class potionplayer(models.Model):
     _name = 'provaowerfull.battles'
     _description = 'Battles'
 
-    player1 = fields.Many2one('provaowerfull.player', required=True)
+    player1 = fields.Many2one('res.partner', required=True)
     p1_name = fields.Char(related="player1.name")
-    player2 = fields.Many2one('provaowerfull.player', required=True)
+    player2 = fields.Many2one('res.partner', required=True)
     p2_name = fields.Char(related="player2.name")
 
     p1_hero1 = fields.Many2one('provaowerfull.hero', required=True)

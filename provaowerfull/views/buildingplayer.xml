@@ -19,9 +19,6 @@
             <field name="model">provaowerfull.buildingplayer</field>
             <field name="arch" type="xml">
                 <form>
-                    <header>
-                        <field name="state" widget="statusbar"></field>
-                    </header>
                     <sheet>
                         <group>
                             <separator string="Building Player Information"></separator>
@@ -30,9 +27,7 @@
                             <field name="capacity"/>
                             <field name="collection_minute"/>
                             <field name="level"/>  
-                            <field name="date_start"/>     
-                            <field name="date_end"/> 
-                            <field name="progress" widget="progressbar"/>                             
+                            <field name="actual_capacity"/>                         
                         </group>
                     </sheet>
                 </form>
@@ -90,7 +85,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="provaowerfull.buildingplayer_calendar">
+        <!--<record model="ir.ui.view" id="provaowerfull.buildingplayer_calendar">
             <field name="name">provaowerfull buildingplayer Calendar</field>
             <field name="model">provaowerfull.buildingplayer</field>
             <field name="arch" type="xml">
@@ -101,6 +96,6 @@
                                 <field name="name"></field>
                 </calendar>                          
             </field>
-        </record>
+        </record>-->
     </data>
 </odoo>

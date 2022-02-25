@@ -57,5 +57,18 @@
                 </search>
             </field>
         </record>
+
+
+                <!-- Vista graph-->
+                <record model="ir.ui.view" id="provaowerfull.types_heroes">
+                    <field name="name">provaowerfull.hero</field>
+                    <field name="model">provaowerfull.hero</field>
+                    <field name="arch" type="xml">
+                        <graph string="Types heroes" type="bar">
+                            <field name="type" type="mesure" />
+                            <field name="name" />
+                        </graph>
+                    </field>
+                </record>
     </data>
 </odoo>

@@ -6,40 +6,18 @@ class buildingplayer(models.Model):
     _name = 'provaowerfull.buildingplayer'
     _description = 'Building / Player'
 
-    player = fields.Many2one('provaowerfull.player', ondelete='set null')
+    player = fields.Many2one('res.partner', ondelete='set null')
     player_name = fields.Char(related="player.name")
     building = fields.Many2one('provaowerfull.building', ondelete='set null')
     name = fields.Char(related="building.name")
     building_icon = fields.Image(related="building.building_icon")
-    capacity = fields.Float()
-    collection_minute = fields.Float()
     gold_price = fields.Integer()
     level = fields.Integer(default=1)
-    time = fields.Float(compute='_get_time')
-    date_start = fields.Datetime(default=lambda self: fields.Datetime.now())
-    date_end = fields.Datetime(compute='_get_time')
-    progress = fields.Float()
 
-    state = fields.Selection([('unfinished','Unfinished'),('inprogress','In Progress'),('finished','Finished')])
-
-    
-    @api.depends('date_start')
-    def _get_time(self):  
-        for bp in self:
-            if bp.state != 'finished':
-
-                bp.time = bp.level * bp.level
-                remaining_percent = 100 - bp.progress
-                remaining_time = remaining_percent * bp.time /100
-
-                if bp.date_start:
-                    bp.date_end = fields.Datetime.to_string(fields.Datetime.from_string(fields.datetime.now()) + timedelta(hours=remaining_time))
-                else:
-                    bp.date_end = ''
+    capacity = fields.Float()
+    collection_minute = fields.Float()
+    actual_capacity = fields.Float()
             
-            else:
-                bp.date_end = False
-                bp.time = 0
 
     #Funcion para borrar un edificio propio del player 
     def delete_buildingplayer(self):
@@ -62,3 +40,50 @@ class buildingplayer(models.Model):
                 raise ValidationError('You dont have enough gold to upgrade the building')
         else:
             raise ValidationError('You dont have enough level to upgrade the building')
+
+
+
+    #Funcio para poder recollir els materials creats
+    @api.model
+    def recollection(self):
+
+
+        buildings = self.search([])
+
+        for b in buildings:
+
+            if(b.actual_capacity < b.capacity):
+            
+                b.actual_capacity = b.actual_capacity + b.collection_minute
+            
+
+    def recolectar(self):
+
+        if self.actual_capacity >= self.capacity:
+
+            if self.building.name == "Gold Mine" :
+
+                self.player.gold  = self.player.gold + self.actual_capacity
+                self.actual_capacity = 0
+
+            elif self.building.name == "Mana Collector" :
+
+                self.player.mana  = self.player.mana + self.actual_capacity
+                self.actual_capacity = 0
+
+            else:
+                self.player.mana  = self.player.mana + self.actual_capacity
+                self.actual_capacity = 0
+        else:
+            raise ValidationError('El recollector no esta lleno')      
+
+
+
+
+
+
+
+        
+
+
+
