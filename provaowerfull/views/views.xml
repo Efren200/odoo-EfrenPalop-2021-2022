@@ -68,6 +68,12 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="provaowerfull.pedido_action_window">
+      <field name="name">Powerfullcombat Sale</field>
+      <field name="res_model">provaowerfull.pedido</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
 
 
     <!-- server action to the one above -->
@@ -109,6 +115,8 @@
               action="provaowerfull.buildingplayer_action_window"/>
     <menuitem name="Potions Players" id="provaowerfull.potionplayer_list" parent="provaowerfull.game"
               action="provaowerfull.potionplayer_action_window"/>
+    <menuitem name="Sales" id="provaowerfull.pedido_list" parent="provaowerfull.game"
+              action="provaowerfull.pedido_action_window"/>
 
     <menuitem name="Battles" id="provaowerfull.battles_list" parent="provaowerfull.battle_item"
               action="provaowerfull.battles_action_window"/>

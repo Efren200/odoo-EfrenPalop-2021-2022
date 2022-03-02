@@ -4,7 +4,7 @@
             <field name="name">provaowerfull player Tree</field>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree banner_route="/provaowerfull/pedido" >
                     <field name="name"/>
                     <field name="level"/>
                     <field name="trophies"/>
@@ -16,7 +16,7 @@
             <field name="name">provaowerfull player Form</field>
             <field name="model">res.partner</field>
             <field name="arch" type="xml">
-                <form>
+                <form >
                     <sheet>
                       <header>
                         <field name="image_1920" widget="image"/>

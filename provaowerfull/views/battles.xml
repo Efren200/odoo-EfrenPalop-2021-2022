@@ -4,7 +4,7 @@
             <field name="name">provaowerfull battles Tree</field>
             <field name="model">provaowerfull.battles</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree banner_route="/provaowerfull/batalla">
                     <field name="p1_name"/>
                     <field name="p2_name"/>
                     <field name="winner_name"/>
@@ -21,25 +21,154 @@
                         <group>
                             <group>
                                 <separator string="Player 1"></separator>
-                                <field name="player1"/>
-                                <field name="p1_hero1"/>
-                                <field name="p1_hero2"/>
-                                <field name="p1_hero3"/>
-                                <field name="p1_potion"/>                              
+                                <field name="player1"/>                     
                             </group>
                             <group>
                                 <separator string="Player 2"></separator>
-                                <field name="player2"/>
-                                <field name="p2_hero1"/>
-                                <field name="p2_hero2"/>
-                                <field name="p2_hero3"/>
-                                <field name="p2_potion"/>                              
+                                <field name="player2"/>                             
                             </group>
                         </group>
-                        <button  name = "battle_between_players" type="object" string="FIGHT"></button>
                     </sheet>
                 </form>
             </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="provaowerfull.battle_wizard_form">
+            <field name="name">Provaowerfull Battle Wizard Form</field>
+            <field name="model">provaowerfull.battles_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="previous" type="object" string="Previous" class="btn btn-secondary" states="2,3,4"/>
+                        <button name="next" type="object" string="Next" class="btn oe_highlight" states="1,2,3"/>
+                        <field name="state" widget="statusbar"></field>
+                    </header>
+                    <sheet>
+                        <group states="1">
+                            <field name="player1"/>
+
+                            <notebook states="1">
+                                <page name="heroes" string="Heroes">
+                                    <field name="heroes_aviable1">
+                                        <kanban>
+                                            <field name="id"/>
+                                            <field name="hero" />
+    
+                                            <templates>
+                                                <t t-name="kanban-box">
+    
+                                                    <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
+                                                        <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block provaowerfull_img_kanban"
+                                                             t-attf-style="background-image:url('#{kanban_image('provaowerfull.hero_transient', 'imagen', record.id.value, placeholder)}')">
+                                                        </div>
+    
+    
+                                                        <div class="oe_kanban_details d-flex flex-column">
+                                                            <a type="open"><h4 class="o_kanban_record_title oe_partner_heading"><field name="hero"/></h4></a>
+                                                        </div>
+                                                        <button name="selectp1"
+                                                                type="object" string="Select"
+                                                                class="btn btn-primary"
+                                                                context="{'battles_wizard_context': parent.id}"
+                                                        >Select</button>
+                                                    </div>
+    
+    
+                                                </t>
+                                            </templates>
+                                        </kanban>
+    
+                                    </field>
+    
+                                    <field name="heroes1" >
+                                        <tree>
+                                            <field name="name" />
+                                            <field name="stars" />
+                                        </tree>
+                                    </field>
+    
+                                </page>
+                            </notebook>
+    
+                        </group>
+
+                        <group states="2">
+                            <field name="player2"/>
+
+                            <notebook states="2">
+                                <page name="heroes" string="Heroes">
+                                    <field name="heroes_aviable2">
+                                        <kanban>
+                                            <field name="id"/>
+                                            <field name="hero" />
+    
+                                            <templates>
+                                                <t t-name="kanban-box">
+    
+                                                    <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill ">
+                                                        <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block provaowerfull_img_kanban"
+                                                             t-attf-style="background-image:url('#{kanban_image('provaowerfull.hero_transient', 'imagen', record.id.value, placeholder)}')">
+                                                        </div>
+    
+    
+                                                        <div class="oe_kanban_details d-flex flex-column">
+                                                            <a type="open"><h4 class="o_kanban_record_title oe_partner_heading"><field name="hero"/></h4></a>
+                                                        </div>
+                                                        <button name="selectp2"
+                                                                type="object" string="Select"
+                                                                class="btn btn-primary"
+                                                                context="{'battles_wizard_context': parent.id}"
+                                                        >Select</button>
+                                                    </div>
+    
+    
+                                                </t>
+                                            </templates>
+                                        </kanban>
+    
+                                    </field>
+    
+                                    <field name="heroes2" >
+                                        <tree>
+                                            <field name="name"  />
+                                            <field name="stars" />
+                                        </tree>
+                                    </field>
+    
+                                </page>
+                            </notebook>
+    
+                        </group>
+
+                    <group states="3">
+                        <field name="p1_name" string="Player1"/>
+
+                        <field name="p2_name" string="Player2"/>
+
+                        <button  name = "battle_between_players_wizard" type="object" string="FIGHT"/>
+                    </group>
+
+                    <group states="4">
+                        <field name="winner_name" string="Winner"/>
+                    </group>
+                    <footer>
+                        <button name="create_battle" type="object" string="Create Battle" class="oe_highlight" states="4" />
+                    </footer>
+                </sheet>
+                </form>
+                                    
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="provaowerfull.action_generate_battle">
+            <field name="name">Lets create a battle</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">provaowerfull.battles_wizard</field>
+            <field name="view_id" ref="provaowerfull.battle_wizard_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+
         </record>
     </data>
 </odoo>

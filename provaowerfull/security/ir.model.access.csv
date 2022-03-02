@@ -6,3 +6,4 @@ access_provaowerfull_buildingplayer,provaowerfull.buildingplayer,model_provaower
 access_provaowerfull_potionplayer,provaowerfull.potionplayer,model_provaowerfull_potionplayer,base.group_user,1,1,1,1
 access_provaowerfull_battles,provaowerfull.battles,model_provaowerfull_battles,base.group_user,1,1,1,1
 access_provaowerfull_alliance,provaowerfull.alliance,model_provaowerfull_alliance,base.group_user,1,1,1,1
+access_provaowerfull_pedido,provaowerfull_pedido,model_provaowerfull_pedido,base.group_user,1,1,1,1

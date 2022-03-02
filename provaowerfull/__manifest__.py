@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'sale'],
+    'depends': ['base', 'mail', 'sale', 'product'],
 
     # always loaded
     'data': [
@@ -36,6 +36,7 @@
         'views/battles.xml',
         'views/alliance.xml',
         'views/premium.xml',
+        'views/pedido.xml',
         'crons/crons.xml'
     ],
     # only loaded in demonstration mode

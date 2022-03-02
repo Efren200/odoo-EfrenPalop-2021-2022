@@ -1,21 +1,38 @@
 # -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
 
 
-# class Provaowerfull(http.Controller):
-#     @http.route('/provaowerfull/provaowerfull/', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+class banner_premium_controller(http.Controller):
+    @http.route('/provaowerfull/pedido', auth='user', type='json')
 
-#     @http.route('/provaowerfull/provaowerfull/objects/', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('provaowerfull.listing', {
-#             'root': '/provaowerfull/provaowerfull',
-#             'objects': http.request.env['provaowerfull.provaowerfull'].search([]),
-#         })
+    def banner(self):
+        return {
+            'html': """
+                <div  class="player_banner" style="height: 200px; background-size:100%">
+                    <link href="provaowerfull/static/src/css/banner.css" rel="stylesheet">
 
-#     @http.route('/provaowerfull/provaowerfull/objects/<model("provaowerfull.provaowerfull"):obj>/', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('provaowerfull.object', {
-#             'object': obj
-#         })
+                    <h1>Hazte Premium</h1>
+                    <a class="player_button" type="action" data-reload-on-close="true" 
+                    role="button" data-method="action_generate_premium" data-model="provaowerfull.pedido_wizard">Make Premium</a>
+                    
+                </div> """
+        }
+
+    
+
+class banner_battles_controller(http.Controller):
+    @http.route('/provaowerfull/batalla', auth='user', type='json')
+
+    def banner(self):
+        return {
+            'html': """
+                <div  class="batalla_banner" style="height: 200px; background-size:100%">
+                    <link href="provaowerfull/static/src/css/banner.css" rel="stylesheet">
+
+                    <h1>Make our Battles</h1>
+                    <a class="batalla_button" type="action" data-reload-on-close="true" 
+                    role="button" data-method="action_generate_battle" data-model="provaowerfull.battles_wizard">Start Battle</a>
+                    
+                </div> """
+        }    
+

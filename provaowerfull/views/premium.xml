@@ -30,7 +30,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="provaowerfull.sale_inherit_form">
+        <record model="ir.ui.view" id="provaowerfull.sale_form">
             <field name="name">provaowerfull sale inherit premium form</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"></field>
@@ -46,15 +46,12 @@
         </record>
 
         <record model="product.product" id="provaowerfull.premium_product">
-
             <field name="name">40 Minutes Premium</field>
             <field name="is_premium">True</field>
             <field name="minutes_premium">40</field>
             <field name="type">service</field>
             <field name="list_price">4.99</field>
-
         </record>
-
 
         <record model="ir.cron" forcecreate="True" id="provaowerfull.cron_players_premium">
             <field name="name">Provaowerfull: Cron Players premium</field>
@@ -68,5 +65,7 @@
             <field name="activity_user_type">specific</field>
             <field name="doall" eval="False" />
         </record>
+
+
     </data>
 </odoo>

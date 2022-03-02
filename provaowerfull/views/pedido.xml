@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="provaowerfull.pedido_tree">
+            <field name="name">provaowerfull pedido Tree</field>
+            <field name="model">provaowerfull.pedido</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="player"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.pedido_form">
+            <field name="name">provaowerfull pedido Form</field>
+            <field name="model">provaowerfull.pedido</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <separator string="Sale Information"></separator>
+                                <field name="name"/> 
+                                <field name="player"/>
+                                <field name="producto"/>                     
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="provaowerfull.pedido_wizard_form">
+            <field name="name">provaowerfull pedido wizard Form</field>
+            <field name="model">provaowerfull.pedido_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="previous" type="object" string="Previous" class="btn btn-secondary" states="2,3"/>
+                        <button name="next" type="object" string="Next" class="btn oe_highlight" states="1,2"/>
+                        <field name = "state" widget = "statusbar"/>
+                    </header>
+                    <sheet>
+                        <group states="1,2,3" string = "Sale Name">
+                            <field name="name" attrs="{'readonly':[('state','!=','1')]}"/>
+                        </group>
+                        <group string="Player Selection" states="2">
+                            <field name="player"/>
+                        </group>
+                        <footer>
+                            <button name="create_pedido" type="object" string = "Create" class="oe_highlight" states="3"/>
+                            <button special="cancel" string="Cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="provaowerfull.action_generate_premium">
+            <field name="name">Launch Pedido Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">provaowerfull.pedido_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="provaowerfull.pedido_wizard_form"/>
+            <field name="target">new</field>
+          </record>
+
+
+    </data>
+</odoo>

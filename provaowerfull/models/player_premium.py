@@ -68,3 +68,82 @@ class sale_premium(models.Model):
         record = super(sale_premium,self).create(values)
         record.apply_premium()
         return record
+
+
+class pedido(models.Model):
+
+    _name = 'provaowerfull.pedido'
+
+    name = fields.Char()
+
+    player = fields.Many2one('res.partner', required=True)
+
+    producto = fields.Many2one('product.product', compute='_get_product')
+
+
+
+    def _get_product(self):
+
+        producto = self.env.ref('provaowerfull.premium_product')
+
+        self.producto = producto
+
+
+class pedido_wizard(models.TransientModel):
+
+    _name = 'provaowerfull.pedido_wizard'
+
+    name = fields.Char()
+    player = fields.Many2many('res.partner', required=True)
+    producto = fields.Many2many('product.product', compute='_get_product')
+
+    state = fields.Selection([('1', 'Sale Name'), ('2', 'Player Selection'), ('3', 'Enrollment')], default='1')
+
+
+    def _get_product(self):
+
+        producto = self.env.ref('provaowerfull.premium_product')
+
+        self.producto = producto
+
+    @api.model
+    def action_generate_premium(self):
+        action = self.env.ref('provaowerfull.action_generate_premium').read()[0]
+        return action
+
+    def create_pedido(self):
+
+        for p in self:
+
+           pedido = p.env['sale.order'].create({'partner_id': p.player.id})
+           p.env['sale.order.line'].create({'order_id': pedido.id,'product_id': p.producto.id})
+
+           p.env['provaowerfull.pedido'].create({'player': p.player.id, 'producto': p.producto.id, 'name': p.name})
+           p.player.apply_premium(p.producto.minutes_premium)
+
+    def next(self):
+        if self.state == '1':
+            self.state = '2'
+        elif self.state == '2':
+            self.state = '3'
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': self._name,
+            'res_id': self.id,
+            'view_mode': 'form',
+            'target': 'new',
+        }
+    
+    def previous(self):
+        if self.state == '2':
+            self.state = '1'
+        elif self.state == '3':
+            self.state = '2'
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': self._name,
+            'res_id': self.id,
+            'view_mode': 'form',
+            'target': 'new',
+        }
+
