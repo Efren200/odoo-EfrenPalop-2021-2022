@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_examenfinal_songs,examenfinal.songs,model_examenfinal_songs,base.group_user,1,1,1,1
+access_examenfinal_client_wizard,examenfinal.client_wizard,model_examenfinal_client_wizard,base.group_user,1,1,1,1

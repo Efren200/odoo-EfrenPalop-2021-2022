@@ -1,0 +1,115 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="examenfinal.songs_tree">
+            <field name="name">Songs Tree</field>
+            <field name="model">examenfinal.songs</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="artist"/>
+                    <field name="popularity"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="examenfinal.songs_form">
+          <field name="name">Songs Form</field>
+          <field name="model">examenfinal.songs</field>
+          <field name="arch" type="xml">
+              <form>
+                  <sheet>
+                      <group>
+                        <field name="name"/>
+                        <field name="artist"/>
+                        <field name="clients"/>
+                        <field name="popularity"/>
+                      </group>
+                  </sheet>
+              </form>
+          </field>
+      </record>
+
+     
+    <record model="ir.ui.view" id="examenfinal.client_wizard_form">
+    	<field name="name">Client wizard form</field>
+    	<field name="model">examenfinal.client_wizard</field>
+    	<field name="arch" type="xml">
+        	<form>
+            <group>
+              <field name="song"/>
+              <field name="client"/>
+          </group>
+          <footer>
+            <button name="save_song" type="object" string="Save Song" class="oe_highlight"/>
+        </footer>
+        </form>
+    	</field>
+	  </record>
+
+    <record id="examenfinal.action_client_wizard" model="ir.actions.act_window">
+    	<field name="name">Launch client wizard</field>
+    	<field name="type">ir.actions.act_window</field>
+    	<field name="res_model">examenfinal.client_wizard</field>
+    	<field name="view_mode">form</field>
+    	<field name="view_id" ref="examenfinal.client_wizard_form" />
+    	<field name="target">new</field>
+	</record>
+  <record model="ir.ui.view" id="examenfinal.client_inherit_form">
+    <field name="name">ExamenFinal client template inherit form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"></field>
+    <field name="arch" type="xml">
+        <notebook position="inside">
+            <page string="Songs">
+                <group>
+                    <field name="songs"/>
+                </group>
+                <button type="action" name="%(examenfinal.action_client_wizard)d" string="Client Wizard"/>
+
+            </page>
+        </notebook>
+    </field>
+</record>
+
+
+
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="examenfinal.action_window">
+      <field name="name">examenfinal window</field>
+      <field name="res_model">examenfinal.songs</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="examenfinal.action_server">
+      <field name="name">examenfinal server</field>
+      <field name="model_id" ref="model_examenfinal_examenfinal"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem name="Musica" id="examenfinal.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Musica" id="examenfinal.menu_1" parent="examenfinal.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Songs" id="examenfinal.menu_1_list" parent="examenfinal.menu_1"
+              action="examenfinal.action_window"/>
+
+  </data>
+</odoo>
